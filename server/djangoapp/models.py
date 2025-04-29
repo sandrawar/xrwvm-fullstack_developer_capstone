@@ -19,9 +19,9 @@ class CarModel(models.Model):
         ('SUV', 'SUV'),
         ('WAGON', 'Wagon'),
     ]
-        type = models.CharField(max_length=10,
+    type = models.CharField(max_length=10,
         choices=CAR_TYPES, default='SUV')
-    y   ear = models.IntegerField(default=2023,
+        year = models.IntegerField(default=2023,
         validators=[
             MaxValueValidator(2023),
             MinValueValidator(2015)
