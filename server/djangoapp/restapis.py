@@ -28,7 +28,7 @@ def get_request(endpoint, **kwargs):
         return response.json()
     except Exception as e:
         # If any error occurs
-        print("Network exception occurred: {e}")
+        print(f"Network exception occurred: {e}")
 
 
 def analyze_review_sentiments(text):
@@ -39,7 +39,7 @@ def analyze_review_sentiments(text):
         return response.json()
     except Exception as err:
         print(f"Unexpected {err=}, {type(err)=}")
-        print("Network exception occurred: {e}")
+        print(f"Network exception occurred: {e}")
 
 
 def post_review(data_dict):
@@ -49,4 +49,4 @@ def post_review(data_dict):
         print(response.json())
         return response.json()
     except Exception as e:
-        print("Network exception occurred: {e}")
+        print(f"Network exception occurred: {e}")
