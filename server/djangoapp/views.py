@@ -1,13 +1,6 @@
-# Uncomment the required imports before adding the code
-
-#from django.shortcuts import render
-#from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
-#from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import logout
 from django.contrib import messages
-#from datetime import datetime
-
 from django.http import JsonResponse
 from django.contrib.auth import login, authenticate
 import logging
@@ -31,13 +24,9 @@ def get_cars(request):
     return JsonResponse({"CarModels": cars})
 
 
-# Get an instance of a logger
 logger = logging.getLogger(__name__)
 
 
-# Create your views here.
-
-# Create a `login_request` view to handle sign in request
 @csrf_exempt
 def login_user(request):
     # Get username and password from request.POST dictionary
@@ -56,7 +45,7 @@ def login_user(request):
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
-    data = {"userName":""}
+    data = {"userName": ""}
     return JsonResponse(data)
 
 
@@ -89,10 +78,10 @@ def registration(request):
         password=password, email=email)
         # Login the user and redirect to list page
         login(request, user)
-        data = {"userName": username,"status":"Authenticated"}
+        data = {"userName": username,"status": "Authenticated"}
         return JsonResponse(data)
     else :
-        data = {"userName": username,"error":"Already Registered"}
+        data = {"userName": username,"error": "Already Registered"}
         return JsonResponse(data)
 
 #Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
@@ -100,9 +89,9 @@ def get_dealerships(request, state="All"):
     if(state == "All"):
         endpoint = "/fetchDealers"
     else:
-        endpoint = "/fetchDealers/"+state
+        endpoint = "/fetchDealers/" + state
     dealerships = get_request(endpoint)
-    return JsonResponse({"status":200,"dealers":dealerships})
+    return JsonResponse({"status": 200,"dealers": dealerships})
 
 
 def get_dealer_reviews(request, dealer_id):
